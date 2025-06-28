@@ -1,20 +1,11 @@
 import os
 from os import getenv
 
-# Required variables with error handling
-try:
-    API_ID = int(os.environ["API_ID"])  # Will raise KeyError if missing
-    API_HASH = os.environ["API_HASH"]
-    BOT_TOKEN = os.environ["BOT_TOKEN"]
-    OWNER_ID = int(os.environ.get("OWNER_ID", 0))  # Optional with default
-    SUDO_USERS = list(map(int, os.environ.get("SUDO_USERS", "").split()))
-    CHANNEL_ID = os.environ.get("CHANNEL_ID", "")
-    
-    # Validation
-    if not all([API_ID, API_HASH, BOT_TOKEN]):
-        raise ValueError("Missing required environment variables")
 
-except (KeyError, ValueError) as e:
-    print(f"❌ Configuration Error: {str(e)}")
-    print("Please check your Railway environment variables!")
-    exit(1)
+API_ID = int(getenv("API_ID", 21702398))
+API_HASH = getenv("API_HASH", "70b0cc4ab3e1f29aa2d386883adeda38")
+BOT_TOKEN = getenv("BOT_TOKEN", "8118953747:AAH_F8eClQ6C_x1j0SHU1g_7b-Xfw6M_2JU")
+OWNER_ID = int(getenv("OWNER_ID", "7320087240"))
+SUDO_USERS = list(map(int, getenv("SUDO_USERS", "7320087240").split()))
+MONGO_URL = getenv("MONGO_DB", "mongodb+srv://daxxop:daxxop@daxxop.dg3umlc.mongodb.net/?retryWrites=true&w=majority")
+CHANNEL_ID = int(getenv("CHANNEL_ID", "-1002837751484"))
